@@ -1,13 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-var fortunes = [
-    "사랑",
-    "우정",
-    "희망",
-    "건강",
-    "행복"
-]
+const fortune = require(__dirname+'/lib/fortune.js')
 //Default Set-up
 app
 .set('port', process.env.PORT || port)
@@ -29,7 +23,7 @@ app
     res.render('fortune', {
         title: 'About',
         message: 'About BFKorea Travel',
-        message2: fortunes[Math.floor(Math.random()*fortunes.length)]
+        message2: fortune.getFortune()
     })
 })
 
